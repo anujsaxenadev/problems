@@ -1,3 +1,4 @@
+package recursion;
 class Print1ToN{
     public static void print1ToN(int n){
         if(n <= 0){
