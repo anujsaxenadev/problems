@@ -1,30 +1,30 @@
 package dynamic_programming;
 
 public class MinCostClimbingStairs {
-    int[] minCostAtI = null;
-    public int minCostClimbingStairs(int[] cost) {
-        minCostAtI = new int[cost.length];
-        for(int i = 0; i < minCostAtI.length; i++){
-            minCostAtI[i] = -1;
+    public static int minCostClimbingStairs(int[] cost) {
+        int length = cost.length;
+        if(length == 1){
+            return cost[0];
         }
-        int cost1 = cost[0] + getMinCostClimbingStairs(cost, 0);
-        int cost2 = cost[1] + getMinCostClimbingStairs(cost, 1);
-        return Math.min(cost1, cost2);
+        else if(length == 1){
+            return min(cost[0], cost[1]);
+        }
+        else {
+            int prev1 = cost[0], prev2 = cost[1];
+            for(int i = 2; i < length + 1; i++){
+                int temp = prev2;
+                prev2 = min(prev2, prev1) + ((i == length) ? 0  : cost[i]);
+                prev1 = temp;
+            }
+            return prev2;
+        }
     }
 
-    public int getMinCostClimbingStairs(int[] cost, int index) {
-        if(index < cost.length && minCostAtI[index] != -1){
-            return minCostAtI[index];
-        }
-        int cost1 = 0;
-        if(index + 1 < cost.length){
-            cost1 = cost[index + 1] + getMinCostClimbingStairs(cost, index + 1);
-        }
-        int cost2 = 0;
-        if(index + 2 < cost.length){
-            cost2 = cost[index + 2] + getMinCostClimbingStairs(cost, index + 2);
-        }
-        minCostAtI[index] = Math.min(cost1, cost2);
-        return minCostAtI[index];
+    private static int min(int a, int b){
+        return (a > b) ? b : a;
+    }
+
+    public static void main(String[] args){
+        System.out.println(minCostClimbingStairs(new int[]{10,15,20}));
     }
 }
