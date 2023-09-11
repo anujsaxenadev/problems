@@ -18,12 +18,30 @@ public class HouseRobber {
         }
     }
 
+    public static int maxRobTab(int[] nums) {
+        int length = nums.length;
+        if(length == 0){
+            return 0;
+        }
+        else if(length == 1){
+            return nums[0];
+        }
+        else {
+            int[] dp = new int[length];
+            dp[0] = nums[0];
+            for(int i = 1; i < length; i++){
+                dp[i] = max(dp[i - 1], (i - 2 >= 0 ? dp[i - 2] : 0) + nums[i]);
+            }
+            return dp[length - 1];
+        }
+    }
+
     public static int max(int a, int b){
         return a > b ? a : b;
     }
 
     public static void main(String[] args){
-        System.out.println(maxRobRec(new int[]{1,2,3}, 0, 0));
+        System.out.println(maxRobTab(new int[]{1,2,3}));
     }
     
 }
