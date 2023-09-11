@@ -27,12 +27,14 @@ public class HouseRobber {
             return nums[0];
         }
         else {
-            int[] dp = new int[length];
-            dp[0] = nums[0];
+            int prev1 = nums[0];
+            int prev2 = 0;
             for(int i = 1; i < length; i++){
-                dp[i] = max(dp[i - 1], (i - 2 >= 0 ? dp[i - 2] : 0) + nums[i]);
+                int max = max(prev1, (i - 2 >= 0 ? prev2 : 0) + nums[i]);
+                prev2 = prev1;
+                prev1 = max;
             }
-            return dp[length - 1];
+            return prev1;
         }
     }
 
