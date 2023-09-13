@@ -29,12 +29,35 @@ public class CountDerangements {
             return dp[n];
         }
 	}
+
+    public static long countDerangementsTab(int n) {
+        if(n == 0 || n == 1){
+            return 0;
+        }
+        else if(n == 2){
+            return 1;
+        }
+        else {
+            long[] dp = new long[n + 1];
+            for(int i = 0; i < n + 1; i++){
+                dp[i] = -1;
+            }
+            dp[0] = 0;
+            dp[1] = 0;
+            dp[2] = 1;
+            for(int i = 3; i <= n; i++){
+                dp[i] = (((i - 1) % MOD) * ((dp[i - 2] % MOD) + (dp[i - 1] % MOD)) % MOD) % MOD;
+            }
+            return dp[n];
+        }
+	}
+
     public static void main(String[] args){
         int n = 2078;
         long[] dp = new long[n + 1];
         for(int i = 0; i < n + 1; i++){
             dp[i] = -1;
         }
-        System.out.println(countDerangementsMem(n, dp));
+        System.out.println(countDerangementsTab(n));
     }
 }
