@@ -2,8 +2,8 @@ package sorting;
 
 public class InsertionSort {
     
-     // Inplace Sort
-     static void sort(int[] list){
+    // Inplace Sort
+    static void sort(int[] list){
         int length = list.length;
         for(int i = 1; i < length; i++){
             for(int j = i; j > 0; j--){
