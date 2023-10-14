@@ -1,20 +1,15 @@
 package sorting;
 
-public class BubbleSort {
-
-    // Inplace Sort
-    static void sort(int[] list){
+public class InsertionSort {
+    
+     // Inplace Sort
+     static void sort(int[] list){
         int length = list.length;
-        for(int i = 0; i < length; i++){
-            boolean swapFlag = false;
-            for(int j = 0; j < length - 1; j++){
-                if(list[j] > list[j + 1]){
-                    swapValues(list, j, j + 1);
-                    swapFlag = true;
+        for(int i = 1; i < length; i++){
+            for(int j = i; j > 0; j--){
+                if(list[j] < list[j - 1]){
+                    swapValues(list, j, j - 1);
                 }
-            }
-            if(!swapFlag){
-                break;
             }
         }
     }
@@ -30,7 +25,7 @@ public class BubbleSort {
             System.out.println(list[i]);
         }
     }
-
+    
     public static void main(String[] args) {
         int[] list = new int[] {4,2,5,1,3};
         sort(list);
