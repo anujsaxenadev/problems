@@ -10,6 +10,9 @@ public class InsertionSort {
                 if(list[j] < list[j - 1]){
                     swapValues(list, j, j - 1);
                 }
+                else{
+                    break;
+                }
             }
         }
     }
@@ -25,7 +28,6 @@ public class InsertionSort {
             System.out.println(list[i]);
         }
     }
-    
     public static void main(String[] args) {
         int[] list = new int[] {4,2,5,1,3};
         sort(list);
