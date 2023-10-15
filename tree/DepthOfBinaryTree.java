@@ -20,7 +20,14 @@ public class DepthOfBinaryTree {
         }
     }
     public int maxDepth(TreeNode root) {
-        return findDepth(root, 0) + 1;
+        if(root == null){
+            return 0;
+        }
+        else{
+            int lMax = maxDepth(root.left);
+            int rMax = maxDepth(root.right);
+            return Math.max(lMax, rMax) + 1;
+        }
     }
     public static void main(String[] args) {
         
