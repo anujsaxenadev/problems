@@ -10,7 +10,17 @@ public class SumOfNNumbers {
         }
     }
 
+
+    static public int getSumOfNNumbers2(int n) {
+        if(n <= 0){
+            return n;
+        }
+        else{
+            return n + getSumOfNNumbers2(n - 1);
+        }
+    }
+
     public static void main(String[] args){
-        System.out.println(String.valueOf(getSumOfNNumbers(60000, 0)));
+        System.out.println(String.valueOf(getSumOfNNumbers2(3)));
     }
 }
