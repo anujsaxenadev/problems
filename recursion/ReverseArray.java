@@ -24,14 +24,16 @@ public class ReverseArray {
 
 
     // Take half of auxilary stackMa
-    public static void reverseUsingRecursionOptimised(int[] list, int i, int j){
-        if(i < 0 || j < 0 ||  i >= list.length || j >= list.length || i >= j){
+    public static void reverseUsingRecursionOptimised(int[] list, int i){
+        int n = list.length;
+        if(i < 0 || i >= list.length || i >= n / 2){
             return;
         }
+        int j = n - i - 1;
         int temp = list[i];
         list[i] = list[j];
         list[j] = temp;
-        reverseUsingRecursionOptimised(list, i + 1, j - 1);
+        reverseUsingRecursionOptimised(list, i + 1);
     }
 
     public static void print(int[] list){
@@ -42,7 +44,7 @@ public class ReverseArray {
 
     public static void main(String[] args){
         int[] list = new int[]{1,2,3,4,5};
-        reverseUsingRecursionOptimised(list, 0, list.length - 1);
+        reverseUsingRecursionOptimised(list, 0);
         print(list);
     }
 }
